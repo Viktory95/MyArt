@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% block art %}
+    <p class="pright"><a href="/addartinfolder/{{ art.id }}"> Добавить в альбом</a></p>
+    <h2>{{ art.art_title }}</h2>
+    <p>{{ art.art_text }}</p>
+    <img src="{{ art.art_link }}" alt="{{ art.art_title }}">
+    <hr>
+    <p>Комментарии:</p>
+    {% for comment in comments %}
+        <p>{{ comment.comments_text }}</p>
+    {% endfor %}
+    {% if username %}
+        <form action="/art/addcomment/{{ art.id }}/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="button" value="Добавить комментарий">
+        </form>
+    {% endif %}
+{% endblock %}

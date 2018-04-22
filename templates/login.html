@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block login %}
+    <div>
+    <form action="/auth/login/" method="post">
+        {% csrf_token %}
+        <label for="username">Имя пользователя</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Пароль</label>
+        <input type="password" name="password" id="password">
+        {% if login_error %}
+        <label>{{ login_error }}</label>
+        {% endif %}
+        <input type="submit" class="button" value="Войти">
+        <div><a href="/auth/register">Регистрация</a> </div>
+    </form>
+    </div>
+{% endblock %}

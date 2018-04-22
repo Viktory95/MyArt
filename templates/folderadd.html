@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block addfolder %}
+     <form action="/addfolderpost/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="button" value="Добавить альбом">
+     </form>
+{% endblock %}

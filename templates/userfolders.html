@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% block userfolders %}
+    <table>
+        {% for fld in folders %}
+            {% if forloop.first %}
+                <tr>
+                    <td>
+                        {% else %}
+                        {% if forloop.counter0|divisibleby:5 %}
+                            <tr>
+                            <td>
+                                {% else %}
+                            <td>
+                        {% endif %}
+            {% endif %}
+        <div class="polaroid"><a href="/artsfromfolder/{{ fld.id }}">
+            {% for folder, arts in folderarts.items %}
+                {% if folder == fld.id %}
+                    <table>
+                        {% for art in arts %}
+                            {% if forloop.counter0 == 0 %}
+                                <tr>
+                            {% endif %}
+                        {% if forloop.counter0 == 2 %}
+                            <tr>
+                        {% endif %}
+                        <td class="smalltd">
+                            <img class="smallimg" src="{{ art.art_link }}" alt="{{ art.art_title }}">
+                        </td>
+                        {% if forloop.counter0 == 1 %}
+                            </tr>
+                        {% endif %}
+                            {% if forloop.counter0 == 3 %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            {% endfor %}
+            <div class="container">
+                <p>{{ fld.artfolder_name }}</p>
+            </div>
+        </a>
+        </div>
+        </td>
+        {% if forloop.last %}
+            </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

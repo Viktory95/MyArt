@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="main.html">
+    <title>Стена</title>
+</head>
+<body>
+{% for article in articles %}
+    <h6>{{ article.article_date }}</h6>
+    <h4><a href="/article/{{ article.id }}"> {{ article.article_title }}</a></h4>
+    <p>{{ article.article_text }}</p>
+    <p>{{ article.article_likes }}</p>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block artsfromfolder %}
+    <table>
+        {% for art in arts %}
+            {% if forloop.first %}
+                <tr>
+                    <td>
+                        {% else %}
+                        {% if forloop.counter0|divisibleby:5 %}
+                            <tr>
+                            <td>
+                                {% else %}
+                            <td>
+                        {% endif %}
+            {% endif %}
+        <div class="polaroid">
+            <a href="/art/{{ art.id }}"> <img src="{{ art.art_link }}" alt="{{ art.art_title }}"></a>
+            <div class="container">
+                <p>{{ art.art_title }}</p>
+                <p><a href="/art/addlike/{{ art.id }}"> {{ art.art_likes }}</a></p>
+            </div>
+        </div>
+        </td>
+        {% if forloop.last %}
+            </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}
